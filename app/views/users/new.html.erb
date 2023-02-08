@@ -1,0 +1,38 @@
+<div>
+  <h1 class="text-5xl font-unbounded font-bold my-7 text-center">Registration</h1>
+</div>
+<%= form_with model: @user, url: user_new_path, method: :post, local: true, scope: :user do |form| %>
+  <div class="flex items-center justify-center mb-8">
+    <div class="w-full max-w-lg bg-purple-800 border border-t-8 border-l-8 border-b-13 border-r-13 border-black space-y-6 sm:p-6 md:p-8">
+      <div>
+        <%= form.label :name, class:"block mb-2 text-lg font-bold"%>
+        <%= form.text_field :name, class:"border border-8 border-black bg-purple-800 autofill:!bg-purple-800 text-amber-500 text-md focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5"%>
+        <% @user.errors.full_messages_for(:name).each do |message| %>
+          <div class="text-amber-500"><%= message %></div>
+        <% end %>
+      </div>
+      <div>
+        <%= form.label :email, class:"block mb-2 text-lg font-medium"%>
+        <%= form.text_field :email, class:"border border-8 border-black bg-purple-800 autofill:!bg-purple-800 text-amber-500 text-md focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5"%>
+        <% @user.errors.full_messages_for(:email).each do |message| %>
+          <div class="text-amber-500"><%= message %></div>
+        <% end %>
+      </div>
+      <div>
+        <%= form.label :password, class:"block mb-2 text-lg font-medium"%>
+        <%= form.password_field :password, class:"border border-8 border-black bg-purple-800 autofill:!bg-purple-800 text-amber-500 text-md focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5"%>
+        <% @user.errors.full_messages_for(:password).each do |message| %>
+          <div class="text-amber-500"><%= message %></div>
+        <% end %>
+      </div>
+      <div>
+        <%= form.label :password_confirmation, class:"block mb-2 text-lg font-medium"%>
+        <%= form.password_field :password_confirmation, class:"border border-8 border-black bg-purple-800 autofill:!bg-purple-800 text-amber-500 text-md focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5"%>
+        <% @user.errors.full_messages_for(:password_confirmation).each do |message| %>
+          <div class="text-amber-500"><%= message %></div>
+        <% end %>
+      </div>
+      <%= form.submit "Create user", class:"w-full font-bold border border-t-8 border-l-8 border-b-13 border-r-13 border-black bg-amber-500 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 text-md mt-3 px-5 py-2.5 text-center" %>
+    </div>
+  </div>
+<% end %>
