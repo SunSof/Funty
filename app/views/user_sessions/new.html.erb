@@ -1,0 +1,29 @@
+<div>
+  <h1 class="text-5xl font-unbounded font-bold my-7 text-center">Login</h1>
+</div>
+<%= form_with url: login_path, method: :post do |form| %>
+  <div class="flex items-center justify-center mb-8">
+    <div class="w-full max-w-lg bg-purple-800 border border-t-8 border-l-8 border-b-13 border-r-13 border-black space-y-6 sm:p-6 md:p-8">
+      <div>
+        <%= form.label :email, class:"block mb-2 text-lg font-medium"%>
+        <%= form.text_field :email, class:"border border-8 border-black bg-purple-800 autofill:!bg-purple-800 text-amber-500 text-md focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5"%>
+        <% @user.errors.full_messages_for(:email).each do |message| %>
+          <div class="text-amber-500"><%= message %></div>
+        <% end %>
+      </div>
+      <div>
+        <%= form.label :password, class:"block mb-2 text-lg font-medium"%>
+        <%= form.password_field :password, class:"border border-8 border-black bg-purple-800 autofill:!bg-purple-800 text-amber-500 text-md focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5"%>
+        <% @user.errors.full_messages_for(:password).each do |message| %>
+          <div class="text-amber-500"><%= message %></div>
+        <% end %>
+      </div>
+      <% flash.each do |type, msg| %>
+        <div class="text-amber-500 mb-2">
+          <%= msg %>
+        </div>
+      <% end %>
+      <%= form.submit "Sign in", class:"w-full font-bold border border-t-8 border-l-8 border-b-13 border-r-13 border-black bg-amber-500 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 text-md mt-3 px-5 py-2.5 text-center" %>
+    </div>
+  </div>
+<% end %>

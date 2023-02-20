@@ -13,6 +13,13 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { minimum: 2, maximum: 20 }
 
+  # def self.from_omniauth(auth)
+  #   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+  #     user.email = auth.info.email
+  #     user.password = Devise.friendly_token[0, 20]
+  #   end
+  # end
+
   private
 
   def email_downcase
