@@ -33,12 +33,11 @@ jobs:
           key: project-name-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-
+            
+      - run: bundle install
       # Database setup
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
-
-      - run: bundle install
       
       - run: bundle exec rake assets:precompile
       - run: bundle exec rspec
