@@ -39,6 +39,7 @@ jobs:
       - run: bundle exec rake db:schema:load
 
       - run: bundle exec rake assets:precompile
+      - run: bundle install
       - run: bundle exec rspec
 
 workflows:
