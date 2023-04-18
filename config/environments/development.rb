@@ -8,6 +8,9 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+  # ngrok connections to development environment.
+  config.hosts.clear
+
   # Do not eager load code on boot.
   config.eager_load = false
 

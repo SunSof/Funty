@@ -18,5 +18,9 @@ Rails.application.routes.draw do
   post 'login' => 'user_sessions#create'
   post 'logout' => 'user_sessions#destroy', as: 'logout'
 
-  get '/auth/:provider/callback' => 'sessions#omniauth'
+  get 'google_auth' => 'users#google_auth'
+  post 'google_auth' => 'users#google_auth', as: 'sign_up_google'
+
+  get 'google_auth/google-callback' => 'users#google_callback', as: 'callback'
+  post 'google_auth/google-callback' => 'users#google_callback'
 end

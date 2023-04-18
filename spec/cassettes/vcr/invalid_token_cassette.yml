@@ -1,0 +1,60 @@
+---
+http_interactions:
+  - request:
+      method: post
+      uri: https://oauth2.googleapis.com/token
+      body:
+        encoding: UTF-8
+        string: client_id=302858165705-38buaceuu4prdnlkvdlu8v2geogvoh4a.apps.googleusercontent.com&client_secret=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&code=4%2F0AVHEtk4z63fz8mZ7kiY3PDNOvjLa1t5wL3StwNMkfj8BHSfNf2s5NCbPrd7Y_6abm3IiVQ&grant_type=authorization_code&redirect_uri=https%3A%2F%2F9932-88-230-10-191.ngrok-free.app%2Fgoogle_auth%2Fgoogle-callback
+      headers:
+        User-Agent:
+          - Faraday v2.7.4
+        Content-Type:
+          - application/x-www-form-urlencoded
+        Accept-Encoding:
+          - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+        Accept:
+          - "*/*"
+    response:
+      status:
+        code: 200
+        message: OK
+      headers:
+        Expires:
+          - Mon, 01 Jan 1990 00:00:00 GMT
+        Pragma:
+          - no-cache
+        Date:
+          - Fri, 14 Apr 2023 18:12:30 GMT
+        Cache-Control:
+          - no-cache, no-store, max-age=0, must-revalidate
+        Content-Type:
+          - application/json; charset=utf-8
+        Vary:
+          - Origin
+          - Referer
+          - X-Origin
+        Server:
+          - scaffolding on HTTPServer2
+        X-Xss-Protection:
+          - "0"
+        X-Frame-Options:
+          - SAMEORIGIN
+        X-Content-Type-Options:
+          - nosniff
+        Alt-Svc:
+          - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+        Transfer-Encoding:
+          - chunked
+      body:
+        encoding: ASCII-8BIT
+        string: |-
+          {
+            "access_token": "ya29.a0Ael9sCNN5rp9BCGopYs_DG0MgMobOjWikEKIMvCmIIZCG4ej3epstr-B1sbTqiSGz_E4Xmuk1aILby9QGuBcadzQ0Jj10IqwxJv5WG4UEpOQWA4GmzFm-E8SsDNXGLfUs83yJbSpHxazIqkI3QeMy9AL9B33E5QaCgYKAUkSARESFQF4udJhGOO2Vfy2i8iJZYc3XsOUXQ0166",
+            "expires_in": 3560,
+            "scope": "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/drive.file openid",
+            "token_type": "Bearer",
+            "id_token": "fbwuk7383"
+          }
+    recorded_at: Fri, 14 Apr 2023 18:12:30 GMT
+recorded_with: VCR 6.1.0

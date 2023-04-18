@@ -40,6 +40,18 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def google_auth
+    redirect_to GoogleAuth.new.auth_url, allow_other_host: true
+  end
+
+  def google_callback
+    param_code = params['code']
+    @user = User.new(GoogleAuth.new.get_user_info(param_code))
+    @user.save(validate: false)
+    auto_login(@user)
+    redirect_to root_path
+  end
+
   private
 
   def user_params
