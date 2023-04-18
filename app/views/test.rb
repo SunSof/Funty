@@ -1,1 +1,3 @@
-def dnvmir; end
+def test
+  test = 'test'
+end
