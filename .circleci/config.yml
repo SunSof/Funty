@@ -6,7 +6,7 @@ jobs:
     parallelism: 1
     working_directory: ~/funty
     docker:
-      - image: cimg/ruby:3.1.2
+      - image: cimg/ruby:2.7.6
         environment:
           PGHOST: localhost
           PGUSER: funty
