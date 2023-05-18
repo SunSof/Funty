@@ -20,6 +20,7 @@ class GoogleAuth
       'scope' => 'openid',
       'include_granted_scopes' => 'true',
       'access_type' => 'offline',
+      'prompt' => 'select_account',
       'redirect_uri' => @redirect_uri
     }
 
