@@ -20,6 +20,7 @@ class GoogleAuth
       'scope' => 'openid',
       'include_granted_scopes' => 'true',
       'access_type' => 'offline',
+      'prompt' => 'select_account',
       'redirect_uri' => @redirect_uri
     }
 
@@ -58,7 +59,7 @@ class GoogleAuth
     email = user_info['email']
     return :invalid_params unless name && email
 
-    { name: name, email: email }
+    { name:, email: }
   end
 
   def decrypt_token(token)

@@ -1,10 +1,10 @@
 <div>
   <h1 class="text-5xl font-unbounded font-bold my-7 text-center">Login</h1>
 </div>
-<%= link_to "Log in with Google", '#' %>
 <%= form_with url: login_path, method: :post do |form| %>
   <div class="flex items-center justify-center mb-8">
     <div class="w-full max-w-lg bg-purple-800 border border-t-8 border-l-8 border-b-13 border-r-13 border-black space-y-6 sm:p-6 md:p-8">
+      <%= link_to image_tag('google.png', width:"50", height:"50", class:"mr-4") + "Login with Google",  sign_up_google_path, class:'flex text-2xl font-bold text#align-text-bottom'%>
       <div>
         <%= form.label :email, class:"block mb-2 text-lg font-medium"%>
         <%= form.text_field :email, class:"border border-8 border-black bg-purple-800 autofill:!bg-purple-800 text-amber-500 text-md focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5"%>

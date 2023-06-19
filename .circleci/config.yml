@@ -6,7 +6,7 @@ jobs:
     parallelism: 1
     working_directory: ~/funty
     docker:
-      - image: cimg/ruby:2.7.6
+      - image: cimg/ruby:3.1.2
         environment:
           PGHOST: localhost
           PGUSER: funty
@@ -33,12 +33,12 @@ jobs:
           key: project-name-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-            
+
       - run: bundle install
       # Database setup
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
-      
+
       - run: bundle exec rake assets:precompile
       - run: bundle exec rspec
 

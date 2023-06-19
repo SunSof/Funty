@@ -46,9 +46,16 @@ class UsersController < ApplicationController
 
   def google_callback
     param_code = params['code']
-    @user = User.new(GoogleAuth.new.get_user_info(param_code))
-    @user.save(validate: false)
-    auto_login(@user)
+    user_data = GoogleAuth.new.get_user_info(param_code)
+    registered_user = User.all.find_by(email: user_data[:email])
+
+    if registered_user.nil?
+      new_user = User.new(user_data)
+      new_user.save(validate: false)
+      auto_login(new_user)
+    else
+      auto_login(registered_user)
+    end
     redirect_to root_path
   end
 

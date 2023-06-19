@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.6'
+ruby '3.1.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.4'
@@ -28,7 +28,7 @@ gem 'jbuilder'
 gem 'redis', '~> 4.0'
 
 # Magical Authentication for Rails.
-gem 'sorcery'
+gem 'sorcery', '0.16.5'
 
 # Use PostgreSQL as the database for Active Record
 gem 'pg', '~> 1.4'
@@ -51,15 +51,21 @@ gem 'net-http'
 gem 'faraday'
 gem 'jwt'
 
+# Simple, efficient background processing for Ruby.
+gem 'sidekiq'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'main'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 6.0.0'
 end
 
@@ -77,6 +83,7 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
+  gem 'rails-controller-testing'
   gem 'selenium-webdriver'
   gem 'vcr', '~> 6.1'
   gem 'webdrivers'
