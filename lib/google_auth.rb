@@ -59,7 +59,7 @@ class GoogleAuth
     email = user_info['email']
     return :invalid_params unless name && email
 
-    { name: name, email: email }
+    { name:, email: }
   end
 
   def decrypt_token(token)
