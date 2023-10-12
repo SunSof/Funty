@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
   root 'pages#index'
 
   get 'users/new' => 'users#new', as: 'user_new'
@@ -14,6 +12,8 @@ Rails.application.routes.draw do
 
   delete 'users/:id' => 'users#destroy'
 
+  get 'users/:id/statistics' => 'users#statistics', as: 'user_stat'
+
   get 'login' => 'user_sessions#new', as: 'login'
   post 'login' => 'user_sessions#create'
   post 'logout' => 'user_sessions#destroy', as: 'logout'
@@ -23,4 +23,9 @@ Rails.application.routes.draw do
 
   get 'google_auth/google-callback' => 'users#google_callback', as: 'callback'
   post 'google_auth/google-callback' => 'users#google_callback'
+
+  get 'games/new' => 'games#new', as: 'new_game'
+
+  post 'games/choose' => 'games#choose', as: 'choose'
+  post 'games/result' => 'games#result', as: 'result'
 end

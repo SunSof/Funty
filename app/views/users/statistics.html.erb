@@ -1,0 +1,13 @@
+<div>
+  <h1 class="text-5xl font-unbounded font-bold my-7 text-center">User Statistics</h1>
+</div>
+<div class="flex items-center justify-center mb-8">
+  <div class="w-full max-w-lg bg-purple-800 border border-t-8 border-l-8 border-b-13 border-r-13 border-black sm:p-6 md:p-8">
+    <p class="text-lg font-medium">Name</p>
+    <p class="text-xl font-unbounded font-bold text-amber-500"><%= @user.name %></p>
+    <p class="text-lg font-medium mt-3">Winning</p>
+    <p class="text-xl font-unbounded font-bold text-amber-500"><%= @user.winnings %></p>
+    <p class="text-lg font-medium mt-3">Losses</p>
+    <p class="text-xl font-unbounded font-bold text-amber-500"><%= @user.losses %></p>
+  </div>
+</div>

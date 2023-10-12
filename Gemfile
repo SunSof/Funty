@@ -89,5 +89,5 @@ group :test do
   gem 'webdrivers'
   gem 'webmock'
 end
-
+gem 'htmlbeautifier'
 gem 'tailwindcss-rails', '~> 2.0'

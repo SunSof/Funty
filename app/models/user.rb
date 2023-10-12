@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_one :games
   authenticates_with_sorcery!
   before_validation :email_downcase
 

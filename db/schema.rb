@@ -16,6 +16,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_08_110721) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
+    t.integer "winnings", default: 0
+    t.integer "losses", default: 0
     t.string "email", null: false
     t.string "crypted_password"
     t.string "salt"

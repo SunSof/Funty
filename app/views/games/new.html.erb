@@ -1,0 +1,29 @@
+<div>
+  <h1 class="text-5xl font-unbounded font-bold my-7 text-center">Play!</h1>
+</div>
+<div class="flex flex-row pb-10">
+  <div class="basis-1/4">
+    <h1 class="text-5xl font-unbounded font-bold my-7 text-center">Result</h1>
+    <%= turbo_frame_tag "result" %>
+  </div>
+  <div class="flex basis-1/2 items-center justify-center mb-8">
+    <div class="w-full max-w-lg bg-purple-800 border border-t-8 border-l-8 border-b-13 border-r-13 border-black sm:p-6 md:p-8">
+      <div class="flex flex-row">
+        <%= button_to @game.numbers[0], choose_path, params: {number: @game.numbers[0]}, method: :post, data: { turbo_frame: 'choose' }, class:"w-52 font-bold border border-t-8 border-l-8 border-b-13 border-r-13 border-black bg-amber-500 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 text-6xl mr-4 text-center py-5" %>
+        <%= button_to @game.numbers[1], choose_path, params: {number: @game.numbers[1]}, method: :post, data: { turbo_frame: 'choose' }, class:"w-52 font-bold border border-t-8 border-l-8 border-b-13 border-r-13 border-black bg-amber-500 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 text-6xl text-center py-5" %>
+      </div>
+      <div class="pt-4 flex flex-row">
+        <%= button_to @game.numbers[2], choose_path, params: {number: @game.numbers[2]}, method: :post, data: { turbo_frame: 'choose' }, class:"w-52 font-bold border border-t-8 border-l-8 border-b-13 border-r-13 border-black bg-amber-500 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 text-6xl mr-4 text-center py-5" %>
+        <%= button_to @game.numbers[3], choose_path, params: {number: @game.numbers[3]}, method: :post, data: { turbo_frame: 'choose' }, class:"w-52 font-bold border border-t-8 border-l-8 border-b-13 border-r-13 border-black bg-amber-500 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 text-6xl text-center py-5" %>
+      </div>
+      <div class="pt-4 flex flex-row">
+        <%= button_to 'Confirm', result_path, method: :post, data: { turbo_frame: 'result' }, class:"w-52 font-bold border border-t-8 border-l-8 border-b-13 border-r-13 border-black bg-amber-500 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 text-btn mr-4 px-5 py-2 text-center text-4xl" %>
+        <%= link_to 'Restart', new_game_path, method: :post, class:"w-52 font-bold border border-t-8 border-l-8 border-b-13 border-r-13 border-black bg-amber-500 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 text-btn mr-4 px-8 py-2 text-center text-4xl" %>
+      </div>
+    </div>
+  </div>
+  <div class="basis-1/4">
+    <h1 class="text-5xl font-unbounded font-bold my-7 text-center"><%= current_user.name%></h1>
+    <%= turbo_frame_tag "choose" %>
+  </div>
+</div>
