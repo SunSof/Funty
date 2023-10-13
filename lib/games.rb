@@ -1,14 +1,14 @@
 class Games
   def self.find_game(user_id)
-    return unless (game_data = $redis.get(user_id))
+    return unless (game_data = $redis.get("simple_game_#{user_id}"))
 
     game = eval(game_data)
     Game.new(game[0], game[1])
   end
 
   def self.create_game(user_id)
-    $redis.set(user_id, [[*10..99].sample(4), [*0..3].sample])
-    game_data = eval($redis.get(user_id))
+    $redis.set("simple_game_#{user_id}", [[*10..99].sample(4), [*0..3].sample])
+    game_data = eval($redis.get("simple_game_#{user_id}"))
     Game.new(game_data[0], game_data[1])
   end
 
@@ -19,6 +19,6 @@ class Games
     else
       current_user.increment('losses', by = 1).save!
     end
-    $redis.del(user_id)
+    $redis.del("simple_game_#{user_id}")
   end
 end
