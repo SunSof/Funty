@@ -22,28 +22,6 @@ RSpec.describe Games, type: :class do
         $redis.del("#{Game.game_id}_#{user_id}")
       end
     end
-    describe '::check_for_correctness' do
-      it 'compares data and scores a point when user lose' do
-        user_create = User.create(name: 'Abc', email: 'friend@gmail.com', password: '123456',
-                                  password_confirmation: '123456')
-
-        user_id = user_create.id
-        Games.check_for_correctness(user_id, 10, 20)
-        user = User.find_by(id: user_id)
-        expect(user.losses).to eq 1
-        expect(user.winnings).to eq 0
-      end
-      it 'compares data and scores a point when user win' do
-        user_create = User.create(name: 'Abc', email: 'friend@gmail.com', password: '123456',
-                                  password_confirmation: '123456')
-
-        user_id = user_create.id
-        Games.check_for_correctness(user_id, 20, 20)
-        user = User.find_by(id: user_id)
-        expect(user.winnings).to eq 1
-        expect(user.losses).to eq 0
-      end
-    end
 
     describe '::save_guess' do
       it 'checks if the value is saved' do
@@ -62,6 +40,15 @@ RSpec.describe Games, type: :class do
         number = 10
         Games.save_guess(Game.game_id, user_id, number)
         expect(Games.get_guess(user_id)).to eq 10
+        $redis.del("#{Game.game_id}_#{user_id}_number")
+      end
+    end
+
+    describe '::correct_number' do
+      it 'finds game and gats correct number' do
+        user_id = 10
+        game = $redis.set("#{Game.game_id}_#{user_id}", [[1, 2, 3, 4], 1])
+        expect(Games.correct_number(user_id)).to eq 2
         $redis.del("#{Game.game_id}_#{user_id}_number")
       end
     end

@@ -12,21 +12,16 @@ class Games
     Game.new(game_data[0], game_data[1])
   end
 
-  def self.check_for_correctness(user_id, user_num, correct_number)
-    current_user = User.find_by(id: user_id)
-    if user_num == correct_number
-      current_user.increment('winnings', by = 1).save!
-    else
-      current_user.increment('losses', by = 1).save!
-    end
-    $redis.del("#{Game.game_id}_#{user_id}")
-  end
-
   def self.save_guess(game_id, user_id, number)
     $redis.set("#{game_id}_#{user_id}_number", number)
   end
 
   def self.get_guess(user_id)
     $redis.get("#{Game.game_id}_#{user_id}_number").to_i
+  end
+
+  def self.correct_number(user_id)
+    game = Games.find_game(user_id)
+    game.numbers.fetch(game.index_number)
   end
 end

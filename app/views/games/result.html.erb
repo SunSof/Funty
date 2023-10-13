@@ -1,5 +1,5 @@
 <%= turbo_frame_tag id="result" do %>
-  <% if @user_num == @correct_number %>
+  <% if @correct_number == @guessed_num %>
     <div>
       <h1 class="text-5xl font-unbounded font-bold my-7 text-center"> You win!  </h1>
     </div>

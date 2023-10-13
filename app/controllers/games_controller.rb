@@ -9,10 +9,14 @@ class GamesController < ApplicationController
   end
 
   def result
-    @user_num = Games.get_guess(current_user.id)
-    game_data = Games.find_game(current_user.id)
-    @correct_number = game_data.numbers.fetch(game_data.index_number)
-    Games.check_for_correctness(current_user.id, @user_num, @correct_number)
+    @guessed_num = Games.get_guess(current_user.id)
+    @correct_number = Games.correct_number(current_user.id)
+    if @correct_number == @guessed_num
+      current_user.increment('winnings', by = 1).save!
+    else
+      current_user.increment('losses', by = 1).save!
+    end
+    $redis.del("#{Game.game_id}_#{current_user.id}")
   end
 
   private
