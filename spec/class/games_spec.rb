@@ -9,7 +9,7 @@ RSpec.describe Games, type: :class do
         expect(Games.find_game(2)).to be_a Game
         expect(Games.find_game(2).index_number).to eq 1
         expect(Games.find_game(2).numbers).to eq [1, 2, 3, 4]
-        $redis.del("#{Game.game_id}_#{user_id}")
+        Games.delete_game(user_id)
       end
     end
     describe '::create_game' do
@@ -19,7 +19,7 @@ RSpec.describe Games, type: :class do
         redis_data = eval($redis.get("#{Game.game_id}_#{user_id}"))
         expect(redis_data[0]).to eq game.numbers
         expect(redis_data[1]).to eq game.index_number
-        $redis.del("#{Game.game_id}_#{user_id}")
+        Games.delete_game(user_id)
       end
     end
 
@@ -50,6 +50,15 @@ RSpec.describe Games, type: :class do
         game = $redis.set("#{Game.game_id}_#{user_id}", [[1, 2, 3, 4], 1])
         expect(Games.correct_number(user_id)).to eq 2
         $redis.del("#{Game.game_id}_#{user_id}_number")
+      end
+    end
+
+    describe '::delete_game' do
+      it 'delete game from redis' do
+        user_id = 10
+        $redis.set("#{Game.game_id}_#{user_id}", [[1, 2, 3, 4], 1])
+        Games.delete_game(user_id)
+        expect($redis.get(user_id)).to eq nil
       end
     end
   end

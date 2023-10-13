@@ -24,4 +24,8 @@ class Games
     game = Games.find_game(user_id)
     game.numbers.fetch(game.index_number)
   end
+
+  def self.delete_game(user_id)
+    $redis.del("#{Game.game_id}_#{user_id}")
+  end
 end

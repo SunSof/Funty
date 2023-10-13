@@ -16,7 +16,7 @@ class GamesController < ApplicationController
     else
       current_user.increment('losses', by = 1).save!
     end
-    $redis.del("#{Game.game_id}_#{current_user.id}")
+    Games.delete_game(current_user.id)
   end
 
   private
