@@ -1,4 +1,5 @@
 class Game
+  @@game_id = 'simple_number'
   attr_reader :numbers, :index_number
 
   def initialize(numbers, index_number)
@@ -9,5 +10,9 @@ class Game
 
     @numbers = numbers
     @index_number = index_number
+  end
+
+  def self.game_id
+    @@game_id
   end
 end
