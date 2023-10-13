@@ -12,11 +12,11 @@ jobs:
           PGUSER: funty
           RAILS_ENV: test
       - image: postgres:14.6
-      - image: circleci/redis:4.0.9-alpine
         environment:
           POSTGRES_USER: postgres
           POSTGRES_DB: funty_test
           POSTGRES_PASSWORD: postgres
+      - image: circleci/redis:4.0.9-alpine
 
     steps:
       - checkout

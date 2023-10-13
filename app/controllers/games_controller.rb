@@ -5,13 +5,13 @@ class GamesController < ApplicationController
 
   def choose
     @number = choose_params[:number]
-    $redis.set("#{Game.game_id}_#{current_user.id}_number", @number)
+    Games.save_guess(Game.game_id, current_user.id, @number)
   end
 
   def result
-    @user_num = $redis.get("#{Game.game_id}_#{current_user.id}_number").to_i
-    game_data = eval($redis.get("#{Game.game_id}_#{current_user.id}"))
-    @correct_number = game_data[0].fetch(game_data[1])
+    @user_num = Games.get_guess(current_user.id)
+    game_data = Games.find_game(current_user.id)
+    @correct_number = game_data.numbers.fetch(game_data.index_number)
     Games.check_for_correctness(current_user.id, @user_num, @correct_number)
   end
 

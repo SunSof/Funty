@@ -21,4 +21,12 @@ class Games
     end
     $redis.del("#{Game.game_id}_#{user_id}")
   end
+
+  def self.save_guess(game_id, user_id, number)
+    $redis.set("#{game_id}_#{user_id}_number", number)
+  end
+
+  def self.get_guess(user_id)
+    $redis.get("#{Game.game_id}_#{user_id}_number").to_i
+  end
 end

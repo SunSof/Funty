@@ -44,5 +44,26 @@ RSpec.describe Games, type: :class do
         expect(user.losses).to eq 0
       end
     end
+
+    describe '::save_guess' do
+      it 'checks if the value is saved' do
+        user_id = 2
+        number = 10
+        Games.save_guess(Game.game_id, user_id, number)
+        data = eval($redis.get("#{Game.game_id}_#{user_id}_number"))
+        expect(data).to eq 10
+        $redis.del("#{Game.game_id}_#{user_id}_number")
+      end
+    end
+
+    describe '::get_guess' do
+      it 'gets value from redis' do
+        user_id = 2
+        number = 10
+        Games.save_guess(Game.game_id, user_id, number)
+        expect(Games.get_guess(user_id)).to eq 10
+        $redis.del("#{Game.game_id}_#{user_id}_number")
+      end
+    end
   end
 end
