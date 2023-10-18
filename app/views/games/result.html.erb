@@ -1,0 +1,11 @@
+<%= turbo_frame_tag id="result" do %>
+  <% if @correct_number == @guessed_num %>
+    <div>
+      <h1 class="text-5xl font-unbounded font-bold my-7 text-center"> You win!  </h1>
+    </div>
+  <% else %>
+    <div>
+      <h1 class="text-5xl font-unbounded font-bold my-7 text-center"> You lose! Correct number was <%= @correct_number %></h1>
+    </div>
+  <% end %>
+<% end %>

@@ -2,12 +2,15 @@
   <div class="container flex flex-wrap items-center justify-between mx-auto">
     <div class="flex items-center pt-3">
       <%= link_to image_tag("logo_game.png", width:"100", height:"100", class:"text-start", alt:"Funty Logo"), root_path %>
-      <span class="self-center text-4xl font-unbounded font-bold whitespace-nowrap dark:text-white">Funty</span>
+      <span class="self-center text-4xl font-unbounded font-bold whitespace-nowrap">Funty</span>
     </div>
     <div class="hidden w-full md:block md:w-auto" id="navbar-default">
       <ul class="flex flex-col p-4 mt-4 border border-solid border-8 border-black md:flex-row">
         <% if current_user %>
+          <li class="block py-2 pl-3 pr-4 md:hover:text-purple-700"><%= link_to "Start game", new_game_path, class: "text-3xl font-bold"%></li>
           <li class="block py-2 pl-3 pr-4 md:hover:text-purple-700"><%= link_to "Account", user_path(current_user.id), class: "text-3xl font-bold"%></li>
+          <li class="block py-2 pl-3 pr-4 md:hover:text-purple-700"><%= link_to "Statistics", user_stat_path(current_user.id), class: "text-3xl font-bold"%></li>
+          <li class="block py-2 pl-3 pr-4 md:hover:text-purple-700"><%= link_to "Wallet", '#', class: "text-3xl font-bold"%></li>
         <% else %>
           <li class="block py-2 pl-3 pr-4 md:hover:text-purple-700"><%= link_to "Sign in", login_path, class: "text-3xl font-bold"%></li>
           <li class="block py-2 pl-3 pr-4 md:hover:text-purple-700"><%= link_to "Registration",user_new_path , class: "text-3xl font-bold"%></li>

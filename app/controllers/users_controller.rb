@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :auth_user, only: %i[edit update show destory]
+  before_action :auth_user, only: %i[edit update show destory statistics]
 
   def new
     @user = User.new
@@ -38,6 +38,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
     redirect_to root_path
+  end
+
+  def statistics
+    @user = User.find(params[:id])
   end
 
   def google_auth

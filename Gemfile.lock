@@ -114,6 +114,7 @@ GEM
       activesupport (>= 5.0)
     hashdiff (1.0.1)
     hashie (5.0.0)
+    htmlbeautifier (1.4.2)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.2.1)
@@ -303,6 +304,7 @@ DEPENDENCIES
   factory_bot_rails
   faker!
   faraday
+  htmlbeautifier
   importmap-rails
   jbuilder
   jwt
