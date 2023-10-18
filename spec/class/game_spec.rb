@@ -17,4 +17,14 @@ RSpec.describe Game, type: :class do
       expect { Game.new([1, 2, 3, 4], 'abc') }.to raise_error(ArgumentError)
     end
   end
+  context 'instance methods' do
+    describe '#win_number' do
+      it 'return win number' do
+        user = FactoryBot.create(:user)
+        $redis.set("#{Game.game_id}_#{user.id}", [[1, 2, 3, 4], 1])
+        game = Games.find_game(user.id)
+        expect(game.win_number).to eq 2
+      end
+    end
+  end
 end

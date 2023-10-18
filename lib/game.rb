@@ -15,4 +15,8 @@ class Game
   def self.game_id
     @@game_id
   end
+
+  def win_number
+    numbers.fetch(index_number)
+  end
 end

@@ -44,15 +44,6 @@ RSpec.describe Games, type: :class do
       end
     end
 
-    describe '::correct_number' do
-      it 'finds game and gats correct number' do
-        user_id = 10
-        game = $redis.set("#{Game.game_id}_#{user_id}", [[1, 2, 3, 4], 1])
-        expect(Games.correct_number(user_id)).to eq 2
-        $redis.del("#{Game.game_id}_#{user_id}_number")
-      end
-    end
-
     describe '::delete_game' do
       it 'delete game from redis' do
         user_id = 10

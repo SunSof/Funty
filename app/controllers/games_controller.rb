@@ -10,7 +10,8 @@ class GamesController < ApplicationController
 
   def result
     @guessed_num = Games.get_guess(current_user.id)
-    @correct_number = Games.correct_number(current_user.id)
+    game = Games.find_game(current_user.id)
+    @correct_number = game.win_number
     if @correct_number == @guessed_num
       current_user.increment('winnings', by = 1).save!
     else
