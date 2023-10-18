@@ -7,9 +7,10 @@ class Games
   end
 
   def self.create_game(user_id)
-    $redis.set("#{Game.game_id}_#{user_id}", [[*10..99].sample(4), [*0..3].sample])
-    game_data = eval($redis.get("#{Game.game_id}_#{user_id}"))
-    Game.new(game_data[0], game_data[1])
+    nums = [*10..99].sample(4)
+    index = [*0..3].sample
+    $redis.set("#{Game.game_id}_#{user_id}", [nums, index])
+    Game.new(nums, index)
   end
 
   def self.save_guess(game_id, user_id, number)

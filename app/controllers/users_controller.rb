@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   end
 
   def statistics
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
   end
 
   def google_auth
