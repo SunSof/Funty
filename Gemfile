@@ -84,7 +84,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
   gem 'rails-controller-testing'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '~> 4.14.0'
   gem 'vcr', '~> 6.1'
   gem 'webdrivers'
   gem 'webmock'

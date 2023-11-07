@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   delete 'users/:id' => 'users#destroy'
 
   get 'users/:id/statistics' => 'users#statistics', as: 'user_stat'
+  get 'users/:id/wallet' => 'users#wallet', as: 'wallet'
+  get 'users/:id/invoice' => 'users#invoice', as: 'invoice'
 
   get 'login' => 'user_sessions#new', as: 'login'
   post 'login' => 'user_sessions#create'

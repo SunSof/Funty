@@ -1,0 +1,2 @@
+class RippleClientsController < ApplicationController
+end
