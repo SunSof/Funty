@@ -60,5 +60,10 @@ RSpec.describe User, type: :model do
       expect(user2).not_to be_valid
       expect(user2.errors.full_messages).to eq ['Email has already been taken']
     end
+
+    it 'set user token' do
+      user = User.create(name: 'ABC', email: 'FRIEND@mail.com', password: '123456', password_confirmation: '123456')
+      expect(user.token.class).to eq Integer
+    end
   end
 end

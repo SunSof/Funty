@@ -12,6 +12,15 @@ module Funty
     config.load_defaults 7.0
     config.autoload_paths += %W[#{config.root}/lib]
 
+    config.before_configuration do
+      env_file = File.join(Rails.root, '.env')
+      if File.exist?(env_file)
+        YAML.load(File.open(env_file)).each do |key, value|
+          ENV[key.to_s] = value
+        end
+      end
+    end
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

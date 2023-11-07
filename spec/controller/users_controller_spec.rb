@@ -30,9 +30,11 @@ RSpec.describe UsersController, type: :controller do
                                                                              }).to_return(status: 200, body: user_data.to_json, headers: {})
     end
     it 'if user create return true' do
-      exist_user = FactoryBot.create(:user)
-      get :google_callback, params: parameters
-      expect(User.all.include?(exist_user)).to eq true
+      VCR.use_cassette 'vcr/correct_authorization_cassette' do
+        exist_user = FactoryBot.create(:user)
+        get :google_callback, params: parameters
+        expect(User.all.include?(exist_user)).to eq true
+      end
     end
   end
 end

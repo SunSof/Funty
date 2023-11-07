@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://s.altnet.rippletest.net:51234/
+    body:
+      encoding: UTF-8
+      string: '{"method":"account_tx","params":[{"account":"654321"}]}'
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v2.7.11
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 03 Nov 2023 13:59:06 +0000
+      Connection:
+      - Keep-Alive
+      Content-Length:
+      - '162'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Server:
+      - ripple-json-rpc/rippled-1.12.0
+    body:
+      encoding: UTF-8
+      string: "{\"result\":{\"error\":\"actMalformed\",\"error_code\":35,\"error_message\":\"Account
+        malformed.\",\"request\":{\"account\":\"654321\",\"command\":\"account_tx\"},\"status\":\"error\"}}\n\r\n"
+  recorded_at: Fri, 03 Nov 2023 13:59:06 GMT
+recorded_with: VCR 6.2.0

@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
+  before_create :generate_token
   before_validation :email_downcase
 
   validates :password, length: { minimum: 6 }, if: lambda {
@@ -20,6 +21,10 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { minimum: 2, maximum: 20 }
 
   private
+
+  def generate_token
+    self.token ||= rand(1_000_000...10_000_000)
+  end
 
   def email_downcase
     self.email = email.downcase

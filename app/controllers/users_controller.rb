@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :auth_user, only: %i[edit update show destory statistics]
+  before_action :auth_user, only: %i[edit update show destory statistics wallet invoice]
 
   def new
     @user = User.new
@@ -43,6 +43,12 @@ class UsersController < ApplicationController
   def statistics
     @user = User.find(params[:id])
   end
+
+  def wallet
+    @user = User.find(params[:id])
+  end
+
+  def invoice; end
 
   def google_auth
     redirect_to GoogleAuth.new.auth_url, allow_other_host: true

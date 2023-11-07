@@ -11,6 +11,7 @@ jobs:
           PGHOST: localhost
           PGUSER: funty
           RAILS_ENV: test
+          TESTNET_URL: "https://s.altnet.rippletest.net:51234/"
       - image: postgres:14.6
         environment:
           POSTGRES_USER: postgres
@@ -23,7 +24,7 @@ jobs:
 
       # Restore bundle cache
       - restore_cache:
-          key: flashcards-{{ checksum "Gemfile.lock" }}
+          key: funty-{{ checksum "Gemfile.lock" }}
 
       - run: bundle lock --add-platform x86_64-linux
       - run: bundle config set --local path 'vendor/bundle'
@@ -31,7 +32,7 @@ jobs:
       # Store bundle cache
       - save_cache:
           # remove space between { {
-          key: project-name-{{ checksum "Gemfile.lock" }}
+          key: funty-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
 

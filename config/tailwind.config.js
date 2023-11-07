@@ -17,6 +17,8 @@ module.exports = {
       '4xl': '2.441rem',
       '5xl': '3.052rem',
       '6xl': '4.452rem',
+      '7xl': '5.500rem',
+      '8xl': '6.400rem',
     },
     borderWidth: {
     DEFAULT: '1px',
