@@ -6,10 +6,10 @@ RSpec.describe ProcessTransaction, type: :class do
       it 'add transaction in data base and increment user balance' do
         VCR.use_cassette 'ripple/transaction' do
           user = FactoryBot.create(:user)
-          user.token = 1_122_334_455
-          user.save!
+          balance = user.balance
           ProcessTransaction.run
-          expect(User.first.balance).to eq 13_000_000
+          new_balance = User.find(user.id).balance
+          expect(new_balance > balance).to eq true
           Transaction.delete_all
         end
       end

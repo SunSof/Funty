@@ -23,7 +23,7 @@ class User < ApplicationRecord
   private
 
   def generate_token
-    self.token = rand(1_000_000...10_000_000)
+    self.token ||= rand(1_000_000...10_000_000)
   end
 
   def email_downcase
