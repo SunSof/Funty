@@ -5,7 +5,7 @@ class CreateTransactions < ActiveRecord::Migration[7.0]
       t.integer :amount, null: false
       t.integer :destination_tag
 
-      t.timestamps, null: false
+      t.timestamps
     end
   end
 end
