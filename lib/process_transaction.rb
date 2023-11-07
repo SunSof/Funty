@@ -2,12 +2,12 @@ class ProcessTransaction
   def self.run(account = ENV['ACCOUNT_ADDRESS'])
     transactions = RippleClient.get_account_transactions(account)
     transactions.each do |transaction|
-      transaction_id = transaction.dig('tx', 'hash')
+      hash = transaction.dig('tx', 'hash')
       transaction_result = transaction.dig('meta', 'TransactionResult')
-      next unless transaction_result == 'tesSUCCESS' && Transaction.exists?(transaction_id:) == false
+      next unless transaction_result == 'tesSUCCESS' && Transaction.exists?(hash:) == false
 
       params = {
-        transaction_id:,
+        hash:,
         amount: transaction.dig('tx', 'Amount'),
         destination_tag: transaction.dig('tx', 'DestinationTag')
       }

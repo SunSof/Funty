@@ -15,8 +15,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_30_150551) do
   enable_extension "plpgsql"
 
   create_table "transactions", force: :cascade do |t|
+    t.bigint "hash"
     t.integer "amount"
-    t.string "transaction_id"
     t.integer "destination_tag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
