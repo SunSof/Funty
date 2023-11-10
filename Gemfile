@@ -53,6 +53,7 @@ gem 'jwt'
 
 # Simple, efficient background processing for Ruby.
 gem 'sidekiq'
+gem 'sidekiq-cron'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
