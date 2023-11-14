@@ -1,5 +1,5 @@
-class TransactionJob < ApplicationJob
-  queue_as :default
+class TransactionJob
+  include Sidekiq::Job
 
   def perform(*_args)
     ProcessTransaction.run

@@ -1,3 +1,4 @@
 transaction_job:
-  cron: "*/1 * * * *" #it will retrieve data every 1 minute
+  cron: "*/5 * * * *" #it will retrieve data every 5 minute
   class: "TransactionJob"
+  queue: default
