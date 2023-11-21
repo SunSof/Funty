@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
-  before_create :generate_token
+  before_create :generate_token, :top_up_balance
   before_validation :email_downcase
 
   validates :password, length: { minimum: 6 }, if: lambda {
@@ -28,5 +28,9 @@ class User < ApplicationRecord
 
   def email_downcase
     self.email = email.downcase
+  end
+
+  def top_up_balance
+    self.balance = 15_000_000
   end
 end
