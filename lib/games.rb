@@ -9,7 +9,11 @@ class Games
   def self.create_game(user_id)
     nums = [*10..99].sample(4)
     index = [*0..3].sample
+    user = User.find(user_id)
     $redis.set("#{Game.game_id}_#{user_id}", [nums, index])
+    return unless user.balance >= Game.price
+
+    user.decrement!('balance', Game.price)
     Game.new(nums, index)
   end
 
