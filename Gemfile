@@ -55,6 +55,9 @@ gem 'jwt'
 gem 'sidekiq'
 gem 'sidekiq-cron'
 
+gem 'base58'
+gem 'bindata'
+gem 'ed25519'
 # Use Sass to process CSS
 # gem "sassc-rails"
 
