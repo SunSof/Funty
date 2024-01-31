@@ -8,7 +8,16 @@ class Serialization
     defenitions
   end
 
-  def self.serialize(data_map, signature_mode)
+  def self.sign(private_key, pub_key, message)
+    keypair = [private_key + pub_key].pack('H*')
+    signing_key = Ed25519::SigningKey.from_keypair(keypair)
+    signature = signing_key.sign(message)
+    signature.unpack1('H*')
+    # signature.to_i(16).to_s(2)
+    # [signature].pack('H*').unpack1('B*')
+  end
+
+  def self.serialize(data_map, signature_mode = false)
     data = data_map.map do |key, value|
       next unless Serialization.should_serialize?(key, signature_mode)
 
@@ -60,9 +69,10 @@ class Serialization
       value = value.insert(0, prefix_field_id)
       [type_code, field_code, key, value]
     end
-    sequence = data.compact.sort
-    arr = sequence.map { |i| i[3].to_i(2).to_s(16) }
-    arr.join
+    # data.compact.sort.each { |i| p i }
+    sequence = data.compact.sort.map { |i| i[3] }.join
+    # arr = sequence.map { |i| i[3].to_i(2).to_s(16) }
+    # arr.join
   end
 
   def self.blob_length(size)
