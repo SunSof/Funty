@@ -8,13 +8,11 @@ class Serialization
     defenitions
   end
 
-  def self.sign(private_key, pub_key, message)
-    keypair = [private_key + pub_key].pack('H*')
-    signing_key = Ed25519::SigningKey.from_keypair(keypair)
-    signature = signing_key.sign(message)
-    signature.unpack1('H*')
-    # signature.to_i(16).to_s(2)
-    # [signature].pack('H*').unpack1('B*')
+  def self.sign(private_key, message)
+    priv_key_bytes = [private_key].pack('H*')
+    instance = Ed25519::SigningKey.new(priv_key_bytes)
+    signature = instance.sign(message)
+    signature.unpack1('H*').upcase
   end
 
   def self.serialize(data_map, signature_mode = false)
