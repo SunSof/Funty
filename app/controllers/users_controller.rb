@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :auth_user, only: %i[edit update show destory statistics wallet invoice]
+  before_action :auth_user, only: %i[edit update show destory statistics wallet user_invoice]
 
   def new
     @user = User.new
@@ -48,7 +48,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def invoice; end
+  def user_invoice
+    @user = User.find(params[:id])
+    $redis.set("withdraw_#{@user.id}", [user_id: withdraw_params[:id], user_wallet: withdraw_params[:user_wallet],
+                                        withdrawal_amount: withdraw_params[:withdrawal_amount]])
+    WithdrawJob.perform_async(@user.id)
+  end
 
   def google_auth
     redirect_to GoogleAuth.new.auth_url, allow_other_host: true
@@ -73,6 +78,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def withdraw_params
+    params.permit(:id, :user_wallet, :withdrawal_amount, :commit)
   end
 
   def auth_user

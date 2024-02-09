@@ -44,8 +44,7 @@ class RippleClient
 
     response_data = JSON.parse(response.body)
     if (200..226).member?(response.status) && response_data.present?
-      data = { sequence: response_data.dig('result', 'account_data', 'Sequence'),
-               ledger_current_index: response_data.dig('result', 'ledger_current_index') }
+      response_data
     else
       :wrong_response
     end
@@ -72,14 +71,14 @@ class RippleClient
     end
   end
 
-  def self.submit(account, private_key_hex, public_key_hex, destination_account)
+  def self.submit(account, private_key_hex, public_key_hex, destination_account, amount)
     conn = Faraday.new(
       url: ENV['TESTNET_URL'],
       headers: { 'Content-Type' => 'application/json' }
     )
     account_info = RippleClient.account_info(account)
-    sequence = account_info[:sequence]
-    current_ledget_sequence = account_info[:ledger_current_index]
+    sequence = account_info.dig('result', 'account_data', 'Sequence')
+    current_ledget_sequence = account_info.dig('result', 'ledger_current_index')
 
     fee = @@fee_multiplier * RippleClient.get_fee
 
@@ -94,15 +93,15 @@ class RippleClient
       'LastLedgerSequence' => last_ledget_sequence,
       'SigningPubKey' => public_key,
       'Destination' => AddressEncoder.to_account_id(destination_account),
-      'Amount' => 5_000_000
+      'Amount' => amount
     }
     prep_signature = Serialization.serialize(prep_tx, true)
-    single_sign_code_bytes = [@@single_sign_code_hex].pack("H*")
-    prep_signature_bytes = [prep_signature].pack("B*")
+    single_sign_code_bytes = [@@single_sign_code_hex].pack('H*')
+    prep_signature_bytes = [prep_signature].pack('B*')
 
     signature = Serialization.sign(private_key_hex, single_sign_code_bytes + prep_signature_bytes)
 
-    final_txn = prep_tx.merge({'TxnSignature' => signature})
+    final_txn = prep_tx.merge({ 'TxnSignature' => signature })
 
     tx_blob = Serialization.serialize(final_txn)
 

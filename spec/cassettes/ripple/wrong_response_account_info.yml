@@ -5,7 +5,7 @@ http_interactions:
     uri: https://s.altnet.rippletest.net:51234/
     body:
       encoding: UTF-8
-      string: '{"method":"account_tx","params":[{"account":"654321"}]}'
+      string: '{"method":"account_info","params":[{"account":null}]}'
     headers:
       Content-Type:
       - application/json
@@ -21,18 +21,18 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 03 Nov 2023 13:59:06 +0000
+      - Fri, 09 Feb 2024 09:51:40 +0000
       Connection:
       - Keep-Alive
       Content-Length:
-      - '162'
+      - '210'
       Content-Type:
       - application/json; charset=UTF-8
       Server:
-      - ripple-json-rpc/rippled-1.12.0
+      - ripple-json-rpc/rippled-2.1.0-rc1
     body:
       encoding: UTF-8
       string: "{\"result\":{\"error\":\"actMalformed\",\"error_code\":35,\"error_message\":\"Account
-        malformed.\",\"request\":{\"account\":\"654321\",\"command\":\"account_tx\"},\"status\":\"error\"}}\n\r\n"
-  recorded_at: Fri, 03 Nov 2023 13:59:06 GMT
+        malformed.\",\"ledger_current_index\":45251413,\"request\":{\"account\":null,\"command\":\"account_info\"},\"status\":\"error\",\"validated\":false}}\n\r\n"
+  recorded_at: Fri, 09 Feb 2024 09:51:40 GMT
 recorded_with: VCR 6.2.0
