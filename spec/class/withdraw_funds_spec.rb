@@ -33,26 +33,24 @@ RSpec.describe WithdrawFunds, type: :class do
         user = FactoryBot.create(:user)
         user.balance = 0
         user.save!
-        $redis.set("withdraw_#{user.id}", [user_id: user.id, user_wallet: 'rDMTLGgdYwuCpP385LayLfmB1aknd5LVa',
-                                           withdrawal_amount: 100_000])
+        user_wallet = 'rDMTLGgdYwuCpP385LayLfmB1aknd5LVa'
+        amount = 100_000
 
         VCR.use_cassette 'withdraw_funds/withdraw' do
-          expect(WithdrawFunds.withdraw(user.id)).to eq :user_not_enought_funds
+          expect(WithdrawFunds.withdraw(user.id, user_wallet, amount)).to eq :user_not_enought_funds
         end
-        $redis.del("withdraw_#{user.id}")
       end
       it 'decrement user balance if the transaction complited' do
         user = FactoryBot.create(:user)
+        user_wallet = 'rDMTLGgdYwuCpP385LayLfmB1aknd5LVa'
+        amount = 100_000
         user_balance_before = user.balance
-        $redis.set("withdraw_#{user.id}", [user_id: user.id, user_wallet: 'rDMTLGgdYwuCpP385LayLfmB1aknd5LVa',
-                                           withdrawal_amount: 100_000])
 
         VCR.use_cassette 'withdraw_funds/withdraw' do
-          WithdrawFunds.withdraw(user.id)
+          WithdrawFunds.withdraw(user.id, user_wallet, amount)
           user_balance_after = User.find(user.id).balance
           expect(user_balance_before > user_balance_after).to eq true
         end
-        $redis.del("withdraw_#{user.id}")
       end
     end
   end

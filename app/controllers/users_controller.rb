@@ -50,9 +50,9 @@ class UsersController < ApplicationController
 
   def user_invoice
     @user = User.find(params[:id])
-    $redis.set("withdraw_#{@user.id}", [user_id: withdraw_params[:id], user_wallet: withdraw_params[:user_wallet],
-                                        withdrawal_amount: withdraw_params[:withdrawal_amount]])
-    WithdrawJob.perform_async(@user.id)
+    user_wallet = withdraw_params[:user_wallet]
+    amount = withdraw_params[:withdrawal_amount].to_i
+    WithdrawJob.perform_async(@user.id, user_wallet, amount)
   end
 
   def google_auth

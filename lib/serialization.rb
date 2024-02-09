@@ -67,10 +67,7 @@ class Serialization
       value = value.insert(0, prefix_field_id)
       [type_code, field_code, key, value]
     end
-    # data.compact.sort.each { |i| p i }
     sequence = data.compact.sort.map { |i| i[3] }.join
-    # arr = sequence.map { |i| i[3].to_i(2).to_s(16) }
-    # arr.join
   end
 
   def self.blob_length(size)
