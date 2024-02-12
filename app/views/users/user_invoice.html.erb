@@ -1,0 +1,23 @@
+<%= turbo_frame_tag id='user_invoice' do %>
+  <div>
+    <h1 class="text-xl text-amber-500 font-bold">How to withdraw money?</h1>
+    <h1 class="text-xl ">
+      1.Enter your wallet number.<br>
+      2.Enter the withdrawal amount, it should not exceed your balance. <br>
+      3.Check carefully and confirm.
+    </h1>
+    <div class="pt-3">
+      <%= form_with url: user_invoice_path,  method: :post, authenticity_token: false do |form| %>
+        <div>
+          <%= form.label :user_address, class:"block text-lg font-bold"%>
+          <%= form.text_field :user_address, class:"border border-8 border-black bg-purple-800 autofill:!bg-purple-800 text-amber-500 text-md focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5"%>
+        </div>
+        <div class="pt-2">
+          <%= form.label :withdrawal_amount, class:"block text-lg font-bold"%>
+          <%= form.text_field :withdrawal_amount, class:"border border-8 border-black bg-purple-800 autofill:!bg-purple-800 text-amber-500 text-md focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5"%>
+        </div>
+        <%= form.submit "Confirm", class:"w-full font-bold border border-t-8 border-l-8 border-b-13 border-r-13 border-black bg-amber-500 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 text-md mt-3 px-5 py-2.5 text-center" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

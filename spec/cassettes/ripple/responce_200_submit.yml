@@ -1,0 +1,106 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://s.altnet.rippletest.net:51234/
+    body:
+      encoding: UTF-8
+      string: '{"method":"account_info","params":[{"account":"rEX5oz43exnmJZjjfaVifNy3rqAnuMjFE7"}]}'
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v2.7.11
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 09 Feb 2024 10:03:42 +0000
+      Connection:
+      - Keep-Alive
+      Content-Length:
+      - '800'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Server:
+      - ripple-json-rpc/rippled-2.1.0-rc1
+    body:
+      encoding: UTF-8
+      string: "{\"result\":{\"account_data\":{\"Account\":\"rEX5oz43exnmJZjjfaVifNy3rqAnuMjFE7\",\"Balance\":\"9838556544\",\"Flags\":0,\"LedgerEntryType\":\"AccountRoot\",\"OwnerCount\":0,\"PreviousTxnID\":\"A0854D791B226D707FDA4B6AF99079A26F6DDA900D1862202323163169F126DA\",\"PreviousTxnLgrSeq\":45234080,\"Sequence\":44051688,\"index\":\"0B30110E85B00F08FC60CB3ACA3CAFD6777B354DFBA978504CC407E9E63EBADA\"},\"account_flags\":{\"defaultRipple\":false,\"depositAuth\":false,\"disableMasterKey\":false,\"disallowIncomingCheck\":false,\"disallowIncomingNFTokenOffer\":false,\"disallowIncomingPayChan\":false,\"disallowIncomingTrustline\":false,\"disallowIncomingXRP\":false,\"globalFreeze\":false,\"noFreeze\":false,\"passwordSpent\":false,\"requireAuthorization\":false,\"requireDestinationTag\":false},\"ledger_current_index\":45251646,\"status\":\"success\",\"validated\":false}}\n\r\n"
+  recorded_at: Fri, 09 Feb 2024 10:03:43 GMT
+- request:
+    method: post
+    uri: https://s.altnet.rippletest.net:51234/
+    body:
+      encoding: UTF-8
+      string: '{"method":"fee","params":[{}]}'
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v2.7.11
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 09 Feb 2024 10:03:43 +0000
+      Connection:
+      - Keep-Alive
+      Content-Length:
+      - '364'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Server:
+      - ripple-json-rpc/rippled-2.1.0-rc1
+    body:
+      encoding: UTF-8
+      string: "{\"result\":{\"current_ledger_size\":\"5\",\"current_queue_size\":\"0\",\"drops\":{\"base_fee\":\"10\",\"median_fee\":\"5000\",\"minimum_fee\":\"10\",\"open_ledger_fee\":\"10\"},\"expected_ledger_size\":\"39\",\"ledger_current_index\":45251646,\"levels\":{\"median_level\":\"128000\",\"minimum_level\":\"256\",\"open_ledger_level\":\"256\",\"reference_level\":\"256\"},\"max_queue_size\":\"2000\",\"status\":\"success\"}}\n\r\n"
+  recorded_at: Fri, 09 Feb 2024 10:03:43 GMT
+- request:
+    method: post
+    uri: https://s.altnet.rippletest.net:51234/
+    body:
+      encoding: UTF-8
+      string: '{"method":"submit","params":[{"tx_blob":"1200002402A02CE8201B02B27C406140000000000186A06840000000000027107321ED8F6699A6F9529185671ACCBF283A7536D5782748A50DC2D79FDF4997213D311574409E18349498CA4CF49EEEA55713BAFC6E0CD79E2D57A4FD1261330B7618B463FB994ABA7C53588277DEB1885D23FDFB19848BDF9FB4717EDAECA36DD9F224160181149F612424D5DF9351F9872176B50DD3C78DE50A958314025610D0B151DCFD648EF2B0BD06D730F3FCA489"}]}'
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v2.7.11
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 09 Feb 2024 10:03:44 +0000
+      Connection:
+      - Keep-Alive
+      Content-Length:
+      - '1270'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Server:
+      - ripple-json-rpc/rippled-2.1.0-rc1
+    body:
+      encoding: UTF-8
+      string: "{\"result\":{\"accepted\":true,\"account_sequence_available\":44051689,\"account_sequence_next\":44051689,\"applied\":true,\"broadcast\":true,\"engine_result\":\"tesSUCCESS\",\"engine_result_code\":0,\"engine_result_message\":\"The
+        transaction was applied. Only final in a validated ledger.\",\"kept\":true,\"open_ledger_cost\":\"10\",\"queued\":false,\"status\":\"success\",\"tx_blob\":\"1200002402A02CE8201B02B27C406140000000000186A06840000000000027107321ED8F6699A6F9529185671ACCBF283A7536D5782748A50DC2D79FDF4997213D311574409E18349498CA4CF49EEEA55713BAFC6E0CD79E2D57A4FD1261330B7618B463FB994ABA7C53588277DEB1885D23FDFB19848BDF9FB4717EDAECA36DD9F224160181149F612424D5DF9351F9872176B50DD3C78DE50A958314025610D0B151DCFD648EF2B0BD06D730F3FCA489\",\"tx_json\":{\"Account\":\"rEX5oz43exnmJZjjfaVifNy3rqAnuMjFE7\",\"Amount\":\"100000\",\"Destination\":\"rDMTLGgdYwuCpP385LayLfmB1aknd5LVa\",\"Fee\":\"10000\",\"LastLedgerSequence\":45251648,\"Sequence\":44051688,\"SigningPubKey\":\"ED8F6699A6F9529185671ACCBF283A7536D5782748A50DC2D79FDF4997213D3115\",\"TransactionType\":\"Payment\",\"TxnSignature\":\"9E18349498CA4CF49EEEA55713BAFC6E0CD79E2D57A4FD1261330B7618B463FB994ABA7C53588277DEB1885D23FDFB19848BDF9FB4717EDAECA36DD9F2241601\",\"hash\":\"3AD8069C3543A5702D6420318EDE6878269CE0393495D5C553E305517740141A\"},\"validated_ledger_index\":45251645}}\n\r\n"
+  recorded_at: Fri, 09 Feb 2024 10:03:44 GMT
+recorded_with: VCR 6.2.0

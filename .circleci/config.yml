@@ -11,6 +11,9 @@ jobs:
           PGHOST: localhost
           PGUSER: funty
           RAILS_ENV: test
+          PUBLICKEY: "8F6699A6F9529185671ACCBF283A7536D5782748A50DC2D79FDF4997213D3115"
+          ACCOUNT_ADDRESS: "rEX5oz43exnmJZjjfaVifNy3rqAnuMjFE7"
+          PRIVATEKEY: "BDD78008B47053B24B418FFB31E9F3EAE6F98A4226D2DF6CE51E6EB0D46DEB52"
           TESTNET_URL: "https://s.altnet.rippletest.net:51234/"
       - image: postgres:14.6
         environment:
@@ -21,6 +24,10 @@ jobs:
 
     steps:
       - checkout
+      - run:
+          command: |
+            echo $PUBLICKEY
+            echo $PRIVATEKEY
 
       # Restore bundle cache
       - restore_cache:

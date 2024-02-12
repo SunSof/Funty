@@ -1,0 +1,37 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://s.altnet.rippletest.net:51234/
+    body:
+      encoding: UTF-8
+      string: '{"method":"account_info","params":[{"account":"rGEtUv3MGXQi7776hkmi9KfJyH9G7FaBaF"}]}'
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v2.7.11
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 09 Feb 2024 09:45:57 +0000
+      Connection:
+      - Keep-Alive
+      Content-Length:
+      - '800'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Server:
+      - ripple-json-rpc/rippled-2.1.0-rc1
+    body:
+      encoding: UTF-8
+      string: "{\"result\":{\"account_data\":{\"Account\":\"rGEtUv3MGXQi7776hkmi9KfJyH9G7FaBaF\",\"Balance\":\"1068000000\",\"Flags\":0,\"LedgerEntryType\":\"AccountRoot\",\"OwnerCount\":0,\"PreviousTxnID\":\"6684430239EF5BF09002A346BA323AEC38E82591871E89F0CD798FAED16A60FF\",\"PreviousTxnLgrSeq\":42531178,\"Sequence\":42311694,\"index\":\"64A82F469FC7EBB1623B1CC77E6DD62A545C332D0145B98E3CE38048305D1432\"},\"account_flags\":{\"defaultRipple\":false,\"depositAuth\":false,\"disableMasterKey\":false,\"disallowIncomingCheck\":false,\"disallowIncomingNFTokenOffer\":false,\"disallowIncomingPayChan\":false,\"disallowIncomingTrustline\":false,\"disallowIncomingXRP\":false,\"globalFreeze\":false,\"noFreeze\":false,\"passwordSpent\":false,\"requireAuthorization\":false,\"requireDestinationTag\":false},\"ledger_current_index\":45251301,\"status\":\"success\",\"validated\":false}}\n\r\n"
+  recorded_at: Fri, 09 Feb 2024 09:45:57 GMT
+recorded_with: VCR 6.2.0

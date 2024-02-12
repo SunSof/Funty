@@ -14,7 +14,11 @@ Rails.application.routes.draw do
 
   get 'users/:id/statistics' => 'users#statistics', as: 'user_stat'
   get 'users/:id/wallet' => 'users#wallet', as: 'wallet'
-  get 'users/:id/invoice' => 'users#invoice', as: 'invoice'
+
+  get 'users/:id/app_invoice' => 'users#app_invoice', as: 'app_invoice'
+
+  get 'users/:id/user_invoice' => 'users#user_invoice'
+  post 'users/:id/user_invoice' => 'users#user_invoice', as: 'user_invoice'
 
   get 'login' => 'user_sessions#new', as: 'login'
   post 'login' => 'user_sessions#create'
