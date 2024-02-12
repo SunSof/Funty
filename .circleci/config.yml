@@ -21,6 +21,10 @@ jobs:
 
     steps:
       - checkout
+      - run:
+          command: |
+            echo $PUBLICKEY
+            echo $PRIVATEKEY
 
       # Restore bundle cache
       - restore_cache:

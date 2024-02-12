@@ -33,21 +33,21 @@ RSpec.describe WithdrawFunds, type: :class do
         user = FactoryBot.create(:user)
         user.balance = 0
         user.save!
-        user_wallet = 'rDMTLGgdYwuCpP385LayLfmB1aknd5LVa'
+        user_address = 'rDMTLGgdYwuCpP385LayLfmB1aknd5LVa'
         amount = 100_000
 
         VCR.use_cassette 'withdraw_funds/withdraw' do
-          expect(WithdrawFunds.withdraw(user.id, user_wallet, amount)).to eq :user_not_enought_funds
+          expect(WithdrawFunds.withdraw(user.id, user_address, amount)).to eq :user_not_enought_funds
         end
       end
       it 'decrement user balance if the transaction complited' do
         user = FactoryBot.create(:user)
-        user_wallet = 'rDMTLGgdYwuCpP385LayLfmB1aknd5LVa'
+        user_address = 'rDMTLGgdYwuCpP385LayLfmB1aknd5LVa'
         amount = 100_000
         user_balance_before = user.balance
 
         VCR.use_cassette 'withdraw_funds/withdraw' do
-          WithdrawFunds.withdraw(user.id, user_wallet, amount)
+          WithdrawFunds.withdraw(user.id, user_address, amount)
           user_balance_after = User.find(user.id).balance
           expect(user_balance_before > user_balance_after).to eq true
         end

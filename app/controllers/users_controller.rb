@@ -50,9 +50,9 @@ class UsersController < ApplicationController
 
   def user_invoice
     @user = User.find(params[:id])
-    user_wallet = withdraw_params[:user_wallet]
+    user_address = withdraw_params[:user_address]
     amount = withdraw_params[:withdrawal_amount].to_i
-    WithdrawJob.perform_async(@user.id, user_wallet, amount)
+    WithdrawJob.perform_async(@user.id, user_address, amount)
   end
 
   def google_auth
@@ -81,7 +81,7 @@ class UsersController < ApplicationController
   end
 
   def withdraw_params
-    params.permit(:id, :user_wallet, :withdrawal_amount, :commit)
+    params.permit(:id, :user_address, :withdrawal_amount, :commit)
   end
 
   def auth_user
