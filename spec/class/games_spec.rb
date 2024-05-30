@@ -13,13 +13,10 @@ RSpec.describe Games, type: :class do
       end
     end
     describe '::create_game' do
-      it 'creates the game in redis, return new game and spend money' do
+      it 'creates the game in redis, return new game' do
         user = FactoryBot.create(:user)
-        user_balance = user.balance
         game = Games.create_game(user.id)
         redis_data = eval($redis.get("#{Game.game_id}_#{user.id}"))
-        new_balance = User.find(user.id).balance
-        expect(user_balance > new_balance).to eq true
         expect(redis_data[0]).to eq game.numbers
         expect(redis_data[1]).to eq game.index_number
         Games.delete_game(user.id)

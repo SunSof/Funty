@@ -31,6 +31,6 @@ class User < ApplicationRecord
   end
 
   def top_up_balance
-    self.balance = 15_000_000
+    self.balance = 15000
   end
 end
