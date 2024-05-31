@@ -1,6 +1,12 @@
 class GamesController < ApplicationController
+
   def new
     @game = Games.find_game(current_user.id) || Games.create_game(current_user.id)
+  end
+
+  def restart
+    @game = Games.create_game(current_user.id)
+    redirect_back(fallback_location: new_game_path)
   end
 
   def choose
@@ -14,6 +20,7 @@ class GamesController < ApplicationController
     @correct_number = game.win_number
     if @correct_number == @guessed_num
       current_user.increment('winnings', by = 1).save!
+      current_user.increment('balance', 15000).save!
     else
       current_user.increment('losses', by = 1).save!
     end

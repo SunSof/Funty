@@ -43,7 +43,7 @@ RSpec.describe WithdrawFunds, type: :class do
       it 'decrement user balance if the transaction complited' do
         user = FactoryBot.create(:user)
         user_address = 'rDMTLGgdYwuCpP385LayLfmB1aknd5LVa'
-        amount = 100_000
+        amount = 10000
         user_balance_before = user.balance
 
         VCR.use_cassette 'withdraw_funds/withdraw' do

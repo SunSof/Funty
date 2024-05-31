@@ -1,6 +1,6 @@
 class Game
   @@game_id = 'simple_number'
-  @@price = 5_000_000
+  @@price = 5_000
   attr_reader :numbers, :index_number
 
   def initialize(numbers, index_number)

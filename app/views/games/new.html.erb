@@ -19,7 +19,7 @@
         </div>
         <div class="pt-4 flex flex-row">
           <%= button_to 'Confirm', result_path, method: :post, data: { turbo_frame: 'result' }, class:"w-52 font-bold border border-t-8 border-l-8 border-b-13 border-r-13 border-black bg-amber-500 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 text-btn mr-4 px-5 py-2 text-center text-4xl"%>
-          <%= link_to 'Restart', new_game_path, class:"w-52 font-bold border border-t-8 border-l-8 border-b-13 border-r-13 border-black bg-amber-500 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 text-btn mr-4 px-8 py-2 text-center text-4xl" %>
+          <%= button_to 'Restart', restart_path, method: :post, class:"w-52 font-bold border border-t-8 border-l-8 border-b-13 border-r-13 border-black bg-amber-500 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 text-btn mr-4 px-8 py-2 text-center text-4xl" %>
         </div>
       </div>
     </div>

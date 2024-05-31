@@ -13,7 +13,6 @@ class Games
     $redis.set("#{Game.game_id}_#{user_id}", [nums, index])
     return unless user.balance >= Game.price
 
-    user.decrement!('balance', Game.price)
     Game.new(nums, index)
   end
 

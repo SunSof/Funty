@@ -1,6 +1,13 @@
+require 'sidekiq/web'
+require 'sidekiq/cron/web'
+
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # When you boot up the server with rails s, you can navigate to localhost:3000/sidekiq to access the web UI.
+  mount Sidekiq::Web => '/sidekiq'
+
   root 'pages#index'
+  get 'pages/help' => 'pages#help', as: 'help'
 
   get 'users/new' => 'users#new', as: 'user_new'
   post 'users/new' => 'users#create'
@@ -31,6 +38,8 @@ Rails.application.routes.draw do
   post 'google_auth/google-callback' => 'users#google_callback'
 
   get 'games/new' => 'games#new', as: 'new_game'
+  get 'games/start' => 'games#start', as: 'start'
+  post 'games/restart' => 'games#restart', as: 'restart'
 
   post 'games/choose' => 'games#choose', as: 'choose'
   post 'games/result' => 'games#result', as: 'result'

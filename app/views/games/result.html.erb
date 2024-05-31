@@ -1,4 +1,5 @@
 <%= turbo_frame_tag id="result" do %>
+  <% current_user.decrement!('balance', Game.price)%>
   <% if @correct_number == @guessed_num %>
     <div>
       <h1 class="text-5xl font-unbounded font-bold my-7 text-center"> You win!  </h1>

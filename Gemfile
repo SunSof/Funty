@@ -4,13 +4,13 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.1.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 7.0.4'
+gem 'rails', '~> 7.1.3'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 6.0'
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem 'importmap-rails'
@@ -55,11 +55,17 @@ gem 'jwt'
 gem 'sidekiq'
 gem 'sidekiq-cron'
 
+# Encoding
 gem 'base58'
 gem 'bindata'
 gem 'ed25519'
-# Use Sass to process CSS
-# gem "sassc-rails"
+
+# Gem for local ruby errors
+gem 'bootsnap'
+gem 'rackup', '~> 2.1'
+gem 'concurrent-ruby', '1.2.3'
+gem 'racc', '1.6.0'
+gem 'yard'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -71,6 +77,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 6.0.0'
+  gem 'solargraph'
 end
 
 group :development do
@@ -93,5 +100,9 @@ group :test do
   gem 'webdrivers'
   gem 'webmock'
 end
+
 gem 'htmlbeautifier'
+gem 'rubocop'
 gem 'tailwindcss-rails', '~> 2.0'
+
+gem "dockerfile-rails", ">= 1.6", :group => :development

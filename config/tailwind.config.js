@@ -21,9 +21,9 @@ module.exports = {
       '8xl': '6.400rem',
     },
     borderWidth: {
-    DEFAULT: '1px',
-    '8': '8px',
-    '13': '13px',
+      DEFAULT: '1px',
+      '8': '8px',
+      '13': '13px',
     },
     extend: {
       fontFamily: {
