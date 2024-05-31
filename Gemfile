@@ -55,6 +55,7 @@ gem 'jwt'
 gem 'sidekiq'
 gem 'sidekiq-cron'
 
+<<<<<<< withdraw_funds
 # Encoding
 gem 'base58'
 gem 'bindata'
@@ -66,6 +67,14 @@ gem 'rackup', '~> 2.1'
 gem 'concurrent-ruby', '1.2.3'
 gem 'racc', '1.6.0'
 gem 'yard'
+=======
+gem 'base58'
+gem 'bindata'
+gem 'ed25519'
+# Use Sass to process CSS
+# gem "sassc-rails"
+
+>>>>>>> main
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 

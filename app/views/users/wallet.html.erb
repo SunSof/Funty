@@ -9,7 +9,11 @@
     </div>
     <%= turbo_frame_tag 'funty_invoice' %>
     <div class="flex items-center justify-center mb-4">
+<<<<<<< withdraw_funds
       <%= link_to "Withdraw money", user_invoice_path(@user.id), data: { turbo_frame: 'user_invoice' }, class: "w-full font-bold border border-t-8 border-l-8 border-b-13 border-r-13 border-black bg-amber-500 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 text-lg px-5 py-2.5 text-center"%>
+=======
+      <%= link_to "Withdrow money", user_invoice_path(@user.id), data: { turbo_frame: 'user_invoice' }, class: "w-full font-bold border border-t-8 border-l-8 border-b-13 border-r-13 border-black bg-amber-500 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 text-lg px-5 py-2.5 text-center"%>
+>>>>>>> main
     </div>
     <%= turbo_frame_tag 'user_invoice' %>
   </div>
