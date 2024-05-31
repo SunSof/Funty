@@ -399,6 +399,7 @@ DEPENDENCIES
   capybara
   concurrent-ruby (= 1.2.3)
   debug
+  dockerfile-rails (>= 1.6)
   ed25519
   factory_bot_rails
   faker!
