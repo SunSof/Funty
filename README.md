@@ -1,24 +1,25 @@
-# README
+# Funty
+  This is a pet project aimed at learning third-party APIs. I based it on online casinos. 
+  Money withdrawals are handled through the Ripple XRP API.
+  The project has jobs that execute transactions for withdrawing money or top up balance. 
+  Hotwire Turbo enables dynamic page processing within the application during gameplay. 
+  Also user registration via Google API.
+   
+## Requirements
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+    Ruby version 3.1.2
+    Rails 7.1.3
+    PostgreSQL
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+   1. Clone the repository: [`git clone https://github.com/SunSof/Funty.git`]
+   2.Install dependencies: `bundle install`
+   3.Setup database: `bundle exec rake db:create` `bundle exec rake db:migrate`
 
-* System dependencies
+## Running
 
-* Configuration
+Start the server and worker: `./bin/dev`
+## Testing
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Run tests with RSpec: `rspec spec`
